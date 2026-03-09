@@ -87,3 +87,28 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Books Library:", error);
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const accordions = document.querySelectorAll(".faq-accordion");
+
+  accordions.forEach((accordion) => {
+    const buttons = accordion.querySelectorAll(".faq-accordion__question");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".faq-accordion__item");
+        const answer = item?.querySelector(".faq-accordion__answer");
+
+        if (!item || !answer) {
+          return;
+        }
+
+        const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+        button.setAttribute("aria-expanded", String(!isExpanded));
+        item.classList.toggle("is-open", !isExpanded);
+        answer.hidden = isExpanded;
+      });
+    });
+  });
+});

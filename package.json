@@ -8,7 +8,7 @@
     "sass:plugin:build": "sass wp-content/plugins/books-library/assets/scss/main.scss wp-content/plugins/books-library/assets/css/main.css",
     "sass:theme": "sass wp-content/themes/twentytwentyfive-child/assets/scss/main.scss wp-content/themes/twentytwentyfive-child/assets/css/main.css --watch",
     "sass:theme:build": "sass wp-content/themes/twentytwentyfive-child/assets/scss/main.scss wp-content/themes/twentytwentyfive-child/assets/css/main.css",
-    "build": "npm run sass:plugin:build && npm run sass:theme:build"
+    "sass:build": "npm run sass:plugin:build && npm run sass:theme:build"
   },
   "repository": {
     "type": "git",
