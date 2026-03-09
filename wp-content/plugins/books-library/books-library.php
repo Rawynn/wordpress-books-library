@@ -21,10 +21,12 @@ require_once BOOKS_LIBRARY_PATH . 'includes/class-assets.php';
 require_once BOOKS_LIBRARY_PATH . 'includes/class-post-types.php';
 require_once BOOKS_LIBRARY_PATH . 'includes/class-templates.php';
 require_once BOOKS_LIBRARY_PATH . 'includes/class-rest-api.php';
+require_once BOOKS_LIBRARY_PATH . 'includes/class-queries.php';
 
 add_action('plugins_loaded', static function (): void {
 	Books_Library_Assets::init();
     Books_Library_Post_Types::init();
     Books_Library_Templates::init();
     Books_Library_REST_API::init();
+    Books_Library_Queries::init();
 });
