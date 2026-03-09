@@ -1,0 +1,21 @@
+# WordPress config
+wp-config.php
+
+# uploads
+wp-content/uploads/
+
+# cache
+wp-content/cache/
+
+# Node
+node_modules/
+
+# logs
+*.log
+
+# env
+.env
+
+# OS
+.DS_Store
+Thumbs.db
