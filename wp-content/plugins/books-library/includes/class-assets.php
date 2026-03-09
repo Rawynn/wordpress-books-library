@@ -1,0 +1,23 @@
+<?php
+declare(strict_types=1);
+
+if (!defined('ABSPATH')) {
+	exit;
+}
+
+final class Books_Library_Assets {
+
+	public static function init(): void {
+		add_action('wp_enqueue_scripts', [self::class, 'enqueue_frontend_assets']);
+	}
+
+	public static function enqueue_frontend_assets(): void {
+		wp_enqueue_script(
+			'books-library-scripts',
+			BOOKS_LIBRARY_URL . 'assets/js/scripts.js',
+			[],
+			BOOKS_LIBRARY_VERSION,
+			true
+		);
+	}
+}
