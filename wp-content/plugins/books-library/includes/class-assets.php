@@ -12,6 +12,13 @@ final class Books_Library_Assets {
 	}
 
 	public static function enqueue_frontend_assets(): void {
+        wp_enqueue_style(
+			'books-library-style',
+			BOOKS_LIBRARY_URL . 'assets/css/main.css',
+			[],
+			BOOKS_LIBRARY_VERSION
+		);
+        
 		wp_enqueue_script(
 			'books-library-scripts',
 			BOOKS_LIBRARY_URL . 'assets/js/scripts.js',
@@ -27,5 +34,14 @@ final class Books_Library_Assets {
                 'restUrl' => esc_url_raw(rest_url('books-library/v1/related-books')),
             ]
         );
+	}
+
+    public static function enqueue_editor_assets(): void {
+		wp_enqueue_style(
+			'books-library-style',
+			BOOKS_LIBRARY_URL . 'assets/css/main.css',
+			[],
+			BOOKS_LIBRARY_VERSION
+		);
 	}
 }
