@@ -19,5 +19,13 @@ final class Books_Library_Assets {
 			BOOKS_LIBRARY_VERSION,
 			true
 		);
+
+        wp_localize_script(
+            'books-library-scripts',
+            'booksLibraryData',
+            [
+                'restUrl' => esc_url_raw(rest_url('books-library/v1/related-books')),
+            ]
+        );
 	}
 }

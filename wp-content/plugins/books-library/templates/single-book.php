@@ -50,7 +50,8 @@ while (have_posts()) :
 
         <h2><?php esc_html_e('More Books', 'books-library'); ?></h2>
 
-        <div id="books-library-related" data-current-book="<?php echo esc_attr(get_the_ID()); ?>">
+        <div id="books-library-related" data-current-book-id="<?php echo esc_attr(get_the_ID()); ?>">
+            <p><?php esc_html_e('Loading books...', 'books-library'); ?></p>
         </div>
 
     </section>
