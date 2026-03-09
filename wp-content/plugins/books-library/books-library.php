@@ -16,3 +16,9 @@ if (!defined('ABSPATH')) {
 define('BOOKS_LIBRARY_VERSION', '1.0.0');
 define('BOOKS_LIBRARY_PATH', plugin_dir_path(__FILE__));
 define('BOOKS_LIBRARY_URL', plugin_dir_url(__FILE__));
+
+require_once BOOKS_LIBRARY_PATH . 'includes/class-assets.php';
+
+add_action('plugins_loaded', static function (): void {
+	Books_Library_Assets::init();
+});
