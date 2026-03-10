@@ -1,0 +1,1 @@
+{"version":3,"file":"blocks/faq-accordion/index.css","mappings":";;;AAAA;EACC;AACD,C","sources":["webpack://public/./wp-content/plugins/books-library/src/blocks/faq-accordion/editor.scss"],"sourcesContent":[".faq-accordion__heading {\r\n\tmargin: 0 0 2rem;\r\n}"],"names":[],"sourceRoot":""}

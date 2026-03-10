@@ -1,0 +1,35 @@
+{
+  "apiVersion": 3,
+  "name": "books-library/faq-item",
+  "title": "FAQ Item",
+  "category": "widgets",
+  "parent": [
+    "books-library/faq-accordion"
+  ],
+  "icon": "plus-alt2",
+  "description": "Single FAQ item.",
+  "textdomain": "books-library",
+  "attributes": {
+    "question": {
+      "type": "string",
+      "default": ""
+    },
+    "answer": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonId": {
+      "type": "string",
+      "default": ""
+    },
+    "panelId": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false
+  },
+  "editorScript": "file:./index.js"
+}
