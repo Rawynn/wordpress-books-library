@@ -1,0 +1,57 @@
+.books-genre-page {
+	padding-bottom: 4rem;
+}
+
+.books-hero--taxonomy {
+	padding-top: 4rem;
+}
+
+.books-hero__text--rich {
+	max-width: 42rem;
+	margin-inline: auto;
+
+	p {
+		margin: 0;
+	}
+}
+
+.navigation.pagination {
+	margin-top: 2rem;
+
+	.nav-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		justify-content: center;
+	}
+
+	.page-numbers {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 44px;
+		min-height: 44px;
+		padding: 0.5rem 0.9rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-pill);
+		background: var(--color-surface);
+		color: var(--color-text);
+		text-decoration: none;
+		transition:
+			background-color var(--transition-base),
+			color var(--transition-base),
+			transform var(--transition-base);
+	}
+
+	.page-numbers:hover,
+	.page-numbers.current {
+		background: var(--color-accent-soft);
+		color: var(--color-accent);
+		transform: translateY(-1px);
+	}
+
+	.page-numbers:focus-visible {
+		outline: 3px solid var(--color-accent);
+		outline-offset: 3px;
+	}
+}

@@ -1,0 +1,86 @@
+.faq-page {
+	position: relative;
+	min-height: 100vh;
+	padding: 4rem 0;
+	background:
+		linear-gradient(rgba(15, 15, 15, 0.28), rgba(15, 15, 15, 0.22)),
+		url("../images/faq-library-bg.png") center center / cover no-repeat;
+	isolation: isolate;
+
+	&__overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			90deg,
+			rgba(255, 255, 255, 0.08) 0%,
+			rgba(255, 255, 255, 0) 55%
+		);
+		z-index: -1;
+	}
+
+	&__layout {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		min-height: calc(100vh - 8rem);
+	}
+
+	&__card {
+		width: min(60%, 860px);
+		padding: 2rem;
+		border: 1px solid rgba(255, 255, 255, 0.28);
+		border-radius: 1.5rem;
+		background: rgba(255, 255, 255, 0.72);
+		backdrop-filter: blur(18px);
+		-webkit-backdrop-filter: blur(18px);
+		box-shadow:
+			0 16px 40px rgba(0, 0, 0, 0.14),
+			0 8px 18px rgba(0, 0, 0, 0.08);
+	}
+
+	&__header {
+		margin-bottom: 2rem;
+	}
+
+	&__eyebrow {
+		margin: 0 0 0.75rem;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--color-accent);
+	}
+
+	&__title {
+		margin: 0;
+		font-size: clamp(2.25rem, 4vw, 4rem);
+		line-height: 1.05;
+		color: var(--color-text);
+	}
+
+	&__intro {
+		margin: 1rem 0 0;
+		max-width: 50ch;
+		font-size: 1.05rem;
+		line-height: 1.7;
+		color: var(--color-text-muted);
+	}
+
+	&__content {
+		color: var(--color-text);
+	}
+}
+
+@media (max-width: 1024px) {
+	.faq-page {
+		&__card {
+			width: min(75%, 860px);
+		}
+	}
+}
+
+@media (max-width: 768px) {
+    .faq-page__card {
+        width: 100%;
+    }
+}

@@ -51,6 +51,8 @@ class Books_Library_REST_API {
 				$genres = wp_list_pluck($terms, 'name');
 			}
 
+            $image_id = get_post_thumbnail_id($book->ID);
+
 			$books[] = [
 				'id'      => $book->ID,
 				'title'   => get_the_title($book->ID),
@@ -58,6 +60,10 @@ class Books_Library_REST_API {
 				'genre'   => $genres,
 				'excerpt' => get_the_excerpt($book->ID),
 				'link'    => get_permalink($book->ID),
+                'image' => [
+                    'medium' => wp_get_attachment_image_url($image_id, 'medium'),
+                    'large'  => wp_get_attachment_image_url($image_id, 'large'),
+                ],
 			];
 		}
 

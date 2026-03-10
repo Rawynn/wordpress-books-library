@@ -3,7 +3,9 @@
   "name": "books-library/faq-item",
   "title": "FAQ Item",
   "category": "widgets",
-  "parent": ["books-library/faq-accordion"],
+  "parent": [
+    "books-library/faq-accordion"
+  ],
   "icon": "plus-alt2",
   "description": "Single FAQ item.",
   "textdomain": "books-library",
@@ -15,11 +17,19 @@
     "answer": {
       "type": "string",
       "default": ""
+    },
+    "buttonId": {
+      "type": "string",
+      "default": ""
+    },
+    "panelId": {
+      "type": "string",
+      "default": ""
     }
   },
   "supports": {
     "html": false,
     "reusable": false
   },
-  "editorScript": "books-library-faq-block-editor"
+  "editorScript": "file:./index.js"
 }
