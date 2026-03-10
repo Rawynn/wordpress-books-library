@@ -19,5 +19,7 @@
   "supports": {
     "html": false
   },
-  "editorScript": "books-library-faq-block-editor"
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "editorStyle": "file:./index.css"
 }

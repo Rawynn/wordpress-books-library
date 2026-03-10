@@ -1,0 +1,143 @@
+.books-floating-widgets {
+	position: fixed;
+	top: 50%;
+	right: 0;
+	z-index: 100;
+	width: 11rem;
+	height: 8rem;
+	transform: translateY(-50%);
+	pointer-events: none;
+}
+
+.books-home-widget {
+	position: absolute;
+	right: 0;
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	width: 3.25rem;
+	height: 3.25rem;
+	padding: 0 1rem 0 0.75rem;
+	overflow: hidden;
+
+	color: #fff;
+	border-radius: 0.75rem 0 0 0.75rem;
+	text-decoration: none;
+	pointer-events: auto;
+
+	box-shadow:
+		0 10px 30px rgba(0, 0, 0, 0.12),
+		0 6px 18px rgba(0, 0, 0, 0.08);
+
+	transition:
+		width 0.28s ease,
+		background-color 0.2s ease,
+		box-shadow 0.2s ease,
+		transform 0.2s ease;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.22) 0%,
+			rgba(255, 255, 255, 0.08) 35%,
+			rgba(255, 255, 255, 0) 65%
+		);
+		pointer-events: none;
+	}
+
+	&:hover,
+	&:focus-visible {
+		width: 11rem;
+		box-shadow:
+			0 14px 36px rgba(0, 0, 0, 0.16),
+			0 8px 20px rgba(0, 0, 0, 0.12);
+	}
+
+	&:focus-visible {
+		outline: 3px solid var(--color-accent);
+		outline-offset: 4px;
+	}
+
+	&__icon {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.4rem;
+		height: 1.4rem;
+		flex-shrink: 0;
+		transition: transform 0.22s ease;
+	}
+
+	&__icon svg {
+		display: block;
+	}
+
+	&__label {
+		position: relative;
+		z-index: 1;
+		font-size: 0.9rem;
+		font-weight: 600;
+		white-space: nowrap;
+		opacity: 0;
+		transform: translateX(-6px);
+		transition:
+			opacity 0.2s ease,
+			transform 0.2s ease;
+	}
+
+	&:hover &__icon,
+	&:focus-visible &__icon {
+		transform: translateX(-1px) scale(1.04);
+	}
+
+	&:hover &__label,
+	&:focus-visible &__label {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	&--home {
+		top: 0;
+		background: var(--color-accent);
+
+		&:hover,
+		&:focus-visible {
+			background: var(--color-accent-hover);
+		}
+	}
+
+	&--faq {
+		top: 4rem;
+		background: var(--color-faq);
+
+		&:hover,
+		&:focus-visible {
+			background: var(--color-faq-hover);
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.books-floating-widgets {
+		top: auto;
+		right: 1rem;
+		bottom: 1rem;
+		width: 10rem;
+		height: 7.5rem;
+		transform: none;
+	}
+
+	.books-home-widget {
+		border-radius: 0.75rem;
+
+		&:hover,
+		&:focus-visible {
+			width: 10rem;
+		}
+	}
+}

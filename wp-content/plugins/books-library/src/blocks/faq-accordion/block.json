@@ -1,0 +1,25 @@
+{
+  "apiVersion": 3,
+  "name": "books-library/faq-accordion",
+  "title": "FAQ Accordion",
+  "category": "widgets",
+  "icon": "editor-help",
+  "description": "Accordion block for FAQ sections.",
+  "textdomain": "books-library",
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "FAQ"
+    },
+    "iconType": {
+      "type": "string",
+      "default": "chevron"
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "editorStyle": "file:./index.css"
+}

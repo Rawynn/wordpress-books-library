@@ -1,3 +1,436 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+:root {
+  --container-width: 1200px;
+  --container-padding: 1.5rem;
+  --color-text: #111;
+  --color-text-muted: #555;
+  --color-surface: #fff;
+  --color-surface-alt: #f6f6f6;
+  --color-border: #e8e8e8;
+  --color-border-light: #ececec;
+  --color-border-dark: #d9d9d9;
+  --color-accent: #f06292;
+  --color-accent-soft: #ffe3ed;
+  --color-accent: #f06292;
+  --color-accent-hover: #d81b60;
+  --color-faq: #8e44ad;
+  --color-faq-hover: #7d3c98;
+  --shadow-card: 0 14px 35px rgba(0, 0, 0, 0.12);
+  --shadow-card-hover: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --radius-m: 1rem;
+  --radius-pill: 999px;
+  --transition-base: 0.2s ease;
+  --transition-flip: 0.7s ease;
+}
+
+.container {
+  width: min(var(--container-width), 100% - var(--container-padding) * 2);
+  margin: 0 auto;
+}
+
+body.home #header,
+body.home #footer,
+body.home hr {
+  display: none;
+}
+
+.books-homepage {
+  padding-bottom: 4rem;
+}
+
+.books-hero {
+  padding: 5rem 0 3rem;
+  text-align: center;
+}
+.books-hero__eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.books-hero__title {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.1;
+  color: var(--color-text);
+}
+.books-hero__text {
+  max-width: 42rem;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  row-gap: 4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.books-grid__item {
+  perspective: 1200px;
+}
+
+.book-flip-card {
+  position: relative;
+  width: 100%;
+}
+.book-flip-card.is-flipped .book-flip-card__inner {
+  transform: rotateY(180deg);
+}
+.book-flip-card__inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4.3;
+  transform-style: preserve-3d;
+  transition: transform var(--transition-flip);
+}
+.book-flip-card__face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: var(--radius-m);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: var(--shadow-card);
+  background: var(--color-surface);
+}
+.book-flip-card__face--back {
+  transform: rotateY(180deg);
+  border: 1px solid var(--color-border-light);
+}
+.book-flip-card__trigger {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.book-flip-card__image, .book-flip-card__placeholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.book-flip-card__image {
+  object-fit: cover;
+}
+.book-flip-card__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: var(--color-surface-alt);
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+.book-flip-card__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.5rem;
+  text-align: left;
+  overflow-y: auto;
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-dark) transparent;
+  /* Chrome / Edge / Safari */
+}
+.book-flip-card__content::-webkit-scrollbar {
+  width: 6px;
+}
+.book-flip-card__content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.book-flip-card__content::-webkit-scrollbar-thumb {
+  background: var(--color-border-dark);
+  border-radius: var(--radius-pill);
+}
+.book-flip-card__content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+.book-flip-card__content {
+  mask-image: linear-gradient(to bottom, black 85%, transparent);
+}
+.book-flip-card__genres {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.book-flip-card__title {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+.book-flip-card__excerpt {
+  margin: 0 0 1.5rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+.book-flip-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+.book-flip-card__footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+.book-flip-card__close, .book-flip-card__read-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+.book-flip-card__close {
+  border: 1px solid var(--color-border-dark);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+}
+.book-flip-card__read-more {
+  padding-inline: 1.25rem;
+  background: var(--color-text);
+  color: var(--color-surface);
+}
+.book-flip-card__close:hover, .book-flip-card__read-more:hover {
+  transform: translateY(-1px);
+}
+.book-flip-card__trigger:focus-visible, .book-flip-card__close:focus-visible, .book-flip-card__read-more:focus-visible,
+.book-flip-card .book-book__genre-link:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+  .books-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .books-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 767px) {
+  .books-grid__item {
+    display: flex;
+    justify-content: center;
+  }
+  .book-flip-card {
+    max-width: 320px;
+  }
+  .book-flip-card__content {
+    padding: 1.25rem;
+  }
+  .book-flip-card__title {
+    font-size: 1.25rem;
+  }
+}
+.faq-page {
+  position: relative;
+  min-height: 100vh;
+  padding: 4rem 0;
+  background: linear-gradient(rgba(15, 15, 15, 0.28), rgba(15, 15, 15, 0.22)), url("../images/faq-library-bg.png") center center/cover no-repeat;
+  isolation: isolate;
+}
+.faq-page__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 55%);
+  z-index: -1;
+}
+.faq-page__layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: calc(100vh - 8rem);
+}
+.faq-page__card {
+  width: min(60%, 860px);
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14), 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+.faq-page__header {
+  margin-bottom: 2rem;
+}
+.faq-page__eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.faq-page__title {
+  margin: 0;
+  font-size: clamp(2.25rem, 4vw, 4rem);
+  line-height: 1.05;
+  color: var(--color-text);
+}
+.faq-page__intro {
+  margin: 1rem 0 0;
+  max-width: 50ch;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+.faq-page__content {
+  color: var(--color-text);
+}
+
+@media (max-width: 1024px) {
+  .faq-page__card {
+    width: min(75%, 860px);
+  }
+}
+@media (max-width: 768px) {
+  .faq-page__card {
+    width: 100%;
+  }
+}
+.books-floating-widgets {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 100;
+  width: 11rem;
+  height: 8rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.books-home-widget {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 3.25rem;
+  height: 3.25rem;
+  padding: 0 1rem 0 0.75rem;
+  overflow: hidden;
+  color: #fff;
+  border-radius: 0.75rem 0 0 0.75rem;
+  text-decoration: none;
+  pointer-events: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: width 0.28s ease, background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.books-home-widget::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 35%, rgba(255, 255, 255, 0) 65%);
+  pointer-events: none;
+}
+.books-home-widget:hover, .books-home-widget:focus-visible {
+  width: 11rem;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.16), 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.books-home-widget:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+}
+.books-home-widget__icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  flex-shrink: 0;
+  transition: transform 0.22s ease;
+}
+.books-home-widget__icon svg {
+  display: block;
+}
+.books-home-widget__label {
+  position: relative;
+  z-index: 1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.books-home-widget:hover .books-home-widget__icon, .books-home-widget:focus-visible .books-home-widget__icon {
+  transform: translateX(-1px) scale(1.04);
+}
+.books-home-widget:hover .books-home-widget__label, .books-home-widget:focus-visible .books-home-widget__label {
+  opacity: 1;
+  transform: translateX(0);
+}
+.books-home-widget--home {
+  top: 0;
+  background: var(--color-accent);
+}
+.books-home-widget--home:hover, .books-home-widget--home:focus-visible {
+  background: var(--color-accent-hover);
+}
+.books-home-widget--faq {
+  top: 4rem;
+  background: var(--color-faq);
+}
+.books-home-widget--faq:hover, .books-home-widget--faq:focus-visible {
+  background: var(--color-faq-hover);
+}
+
+@media (max-width: 768px) {
+  .books-floating-widgets {
+    top: auto;
+    right: 1rem;
+    bottom: 1rem;
+    width: 10rem;
+    height: 7.5rem;
+    transform: none;
+  }
+  .books-home-widget {
+    border-radius: 0.75rem;
+  }
+  .books-home-widget:hover, .books-home-widget:focus-visible {
+    width: 10rem;
+  }
+}
 
 /*# sourceMappingURL=main.css.map */

@@ -1,47 +1,38 @@
 <?php
 declare(strict_types=1);
 
-if (!defined('ABSPATH')) {
-	exit;
-}
-
 get_header();
 
-$term = get_queried_object();
-
-if (!$term instanceof WP_Term) {
-	get_footer();
-	return;
-}
-
-$term_name        = $term->name;
-$term_description = term_description($term);
+$books_query = new WP_Query([
+	'post_type'           => 'book',
+	'post_status'         => 'publish',
+	'posts_per_page'      => -1,
+	'orderby'             => 'date',
+	'order'               => 'DESC',
+	'ignore_sticky_posts' => true,
+	'no_found_rows'       => true,
+]);
 ?>
 
-<main class="books-genre-page">
-    <section class="books-hero books-hero--taxonomy">
-        <div class="container">
-            <p class="books-hero__eyebrow"><?php esc_html_e('Genre archive', 'books-library'); ?></p>
-
-            <h1 class="books-hero__title">
-                <?php echo esc_html($term_name); ?>
-            </h1>
-
-            <?php if (!empty($term_description)) : ?>
-            <div class="books-hero__text books-hero__text--rich">
-                <?php echo wp_kses_post(wpautop($term_description)); ?>
-            </div>
-            <?php endif; ?>
+<main class="books-homepage">
+    <section class="books-hero">
+        <div class="books-hero__inner container">
+            <p class="books-hero__eyebrow"><?php esc_html_e('Books Library', 'books-library'); ?></p>
+            <h1 class="books-hero__title"><?php esc_html_e('Discover our book collection', 'books-library'); ?></h1>
+            <p class="books-hero__text">
+                <?php esc_html_e('Browse all books available in the library and explore each title in detail.', 'books-library'); ?>
+            </p>
         </div>
     </section>
 
     <section class="books-homepage__listing">
-        <div class="container">
-            <?php if (have_posts()) : ?>
-            <ul class="books-grid"
-                aria-label="<?php echo esc_attr(sprintf(__('Books in %s genre', 'books-library'), $term_name)); ?>">
-                <?php while (have_posts()) : the_post(); ?>
+        <div class="books-homepage__inner container">
+            <?php if ($books_query->have_posts()) : ?>
+            <ul class="books-grid" aria-label="<?php esc_attr_e('Books list', 'books-library'); ?>">
                 <?php
+					while ($books_query->have_posts()) :
+						$books_query->the_post();
+
 						$book_id      = get_the_ID();
 						$genres       = get_the_terms($book_id, 'genre');
 						$button_id    = 'book-card-button-' . $book_id;
@@ -118,18 +109,13 @@ $term_description = term_description($term);
                 </li>
                 <?php endwhile; ?>
             </ul>
-
-            <?php the_posts_pagination([
-					'mid_size'  => 1,
-					'prev_text' => __('← Previous', 'books-library'),
-					'next_text' => __('Next →', 'books-library'),
-				]); ?>
-
+            <?php wp_reset_postdata(); ?>
             <?php else : ?>
-            <p><?php esc_html_e('No books found in this genre.', 'books-library'); ?></p>
+            <p><?php esc_html_e('No books found.', 'books-library'); ?></p>
             <?php endif; ?>
         </div>
     </section>
 </main>
 
-<?php get_footer(); ?>
+<?php
+get_footer();
